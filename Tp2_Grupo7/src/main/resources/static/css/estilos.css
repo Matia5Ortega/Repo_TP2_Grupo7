@@ -382,3 +382,34 @@ article ul li {
   overflow: hidden;
 }
 
+/*Estilos para la pagina Contactanos*/
+ 
+#contacto h1{
+	text-transform: uppercase;
+	font-family: Arial;
+	font-weight: bolder;
+	text-align: center;
+	height: 100px; 
+	letter-spacing: 3px;
+}
+#contactanosForm{
+	border: 1px solid black;
+	margin:auto;
+	font-size:18px;
+	padding:30px;
+}
+#contacto p{
+	font-family: Arial;
+	font-size:23px;
+	line-height: 20px
+}
+#contacto a{
+	font-family: Arial;
+	font-size:20px;
+	line-height: 40px;
+}
+#contacto ul{
+	list-style: circle;
+	padding-left: 25px; 
+	text-transform: uppercase;
+}
