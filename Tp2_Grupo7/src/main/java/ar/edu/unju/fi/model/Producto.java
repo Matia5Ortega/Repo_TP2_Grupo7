@@ -12,7 +12,6 @@ public class Producto {
 	}
 
 	public Producto(String nombre, int codigo, float precio, String categoria, byte descuento) {
-		super();
 		this.nombre = nombre;
 		this.codigo = codigo;
 		this.precio = precio;
