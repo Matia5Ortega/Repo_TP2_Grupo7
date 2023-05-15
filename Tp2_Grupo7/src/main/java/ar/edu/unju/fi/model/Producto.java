@@ -54,5 +54,5 @@ public class Producto {
 	public float calcularDescuento() {
 		return this.precio - this.precio*this.descuento/100;
 	}
-	
+
 }
