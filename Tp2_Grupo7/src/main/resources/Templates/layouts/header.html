@@ -1,13 +1,14 @@
 <header>
     <h1>Pet Shop</h1>
     <img src="../static/images/Pet Shop.jpg" alt="PetShop" title="Siempre pensando en tu mascota">
-    <nav>
-        <ul>
-            <li><a href="productos.html">Productos</a></li>
-            <li><a href="servicios_de_paseo.html">Servicios de Paseo</a></li>
-            <li><a href="consejos_de_salud.html">Consejos de Salud</a></li>
-            <li><a href="sucursales.html">Sucursales</a></li>
-            <li><a href="contactanos.html">Contacto</a></li>  
-        </ul>
+    <nav id="menuPrincipal">
+		<ul>
+		  <li><a th:href="@{/inicio}" target="_blank">Inicio</a></li>
+		  <li><a th:href="@{/productos}" target="_blank">Productos</a></li>
+		  <li><a th:href="@{/servicios}" target="_blank">Servicio de paseos</a></li>
+		  <li><a th:href="@{/consejos_de_salud}" target="_blank">Consejos de salud</a></li>
+		  <li><a th:href="@{/sucursal/listado}" target="_blank">Sucursales</a></li>		
+		  <li><a th:href="@{/contactanos}" target="_blank">Contacto</a></li>
+		</ul>
     </nav>
 </header>
