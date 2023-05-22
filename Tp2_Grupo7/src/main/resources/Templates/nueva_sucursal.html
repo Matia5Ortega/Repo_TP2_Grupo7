@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+	<div id="container">
+		<header th:replace="~{layouts/header :: header}"></header>
+	</div>
+	<section id="content">
+		<h>Nueva Sucursal</h>
+		<form th:action="@{/sucursal/guardar}" th:object="${sucursal}" method="post">
+			<label for="nombre">Nombre</label>
+			<input type="text" id="nombre" name="sucursal_nombre" th:field="*{nombre}">
+			<label for="direccion">Dirección</label>
+			<input type="text" id="direccion" name="sucursal_direccion" th:field="*{direccion}">
+			<label for="provincia">Provincia</label>
+			<select id="provincia" name="sucursal_provincia" th:field="*{provincia}">
+				<option value="SALTA">Salta</option>
+				<option value="JUJUY">Jujuy</option>
+				<option value="TUCUMAN">Tucumán</option>
+			</select>
+			<label for="fecha">Fecha de Inicio</label>
+			<input type="date" id="fecha" name="sucursual_fecha" th:field="*{fechaInicio}">
+			<label for="email">Email</label>
+			<input type="email" id="email" name="sucursal_email" th:field="*{email}">
+			<labe for="telefono">Teléfono</labe>
+			<input type="text" id="telefono" name="sucursal_telefono" th:field="*{telefono}">
+			<input type="submit" class="button" value="Guardar">
+		</form>
+	</section>
+    
+</body>
+</html>

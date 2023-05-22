@@ -9,9 +9,39 @@
 	</head>
 	
 	<body class="body-branches">
+		<div id="container">
+		<header th:replace="~{layouts/header :: header}"></header>
+	</div>
 		<h1 class="title-branches">Sucursales</h1>
-    <section class="section-branches">
-        <div class="card-branch">
+    <section id="content-branches" class="section-branches">
+		<a href="@{/sucursal/nuevo}"> Nueva Sucursal </a>
+		
+		<table>
+			<tr>
+				<th>Nombre</th>
+				<th>Dirección</th>
+				<th>Provincia</th>
+				<th>Fecha Ini.</th>
+				<th>E-mail</th>
+				<th>Teléfono</th>
+				<th>Acciones</th>
+			</tr>
+			<tr th:each="sucursal: ${sucursales}">
+				<td th:text="${sucursal.nombre}"></td>
+				<td th:text="${sucursal.direccion}"></td>
+				<td th:text="${sucursal.provincia}"></td>
+				<td th:text="${#temporals.format(sucursal.fechaInicio, 'dd/MM/yyyy')}"></td>
+				<td th:text="${sucursal.email}"></td>
+				<td th:text="${sucursal.telefono}"></td>
+				<td>
+					<a th:href="@{/sucursal/modificar/}+${sucursal.id}">Editar</a>
+					<a th:href="@{/sucursal/eliminar/}+${sucursal.id}">Eliminar</a>
+				</td>
+			</tr>
+			
+		</table>
+		
+       <!-- <div class="card-branch">
             <article>
                 <h3 class="card-head-branch"><b>Sucursal Principal</b></h3>
                 <ul>
@@ -43,7 +73,7 @@
                     <li>Sabados: 9:00 a.m. a 12:30 p.m.</li>
                 </ul>
             </article>
-        </div>
+        </div> -->
 
     </section>
 	</body>
