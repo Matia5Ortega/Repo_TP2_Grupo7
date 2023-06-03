@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=devic.width,initial-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>PetShop - Inicio</title>
-		<link rel="stylesheet" type="text/css" href="../static/css/estilos.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
 	</head>
 	<body class="body-index">
-		<header>
-			<h1>Pet Shop</h1>
-			<img src="../static/images/Pet Shop.jpg" alt="PetShop" title="Siempre pensando en tu mascota">
-			<nav>
-			  <ul>
-			    <li><a href="productos.html">Productos</a></li>
-			    <li><a href="servicios_de_paseo.html">Servicios de Paseo</a></li>
-			    <li><a href="consejos_de_salud.html">Consejos de Salud</a></li>
-			    <li><a href="sucursales.html">Sucursales</a></li>
-			    <li><a href="contactanos.html">Contacto</a></li>  
-			  </ul>
-			</nav>
-		</header>
+		<header th:replace="~{layouts/header :: header}"></header>
     <section>
     	<div id="divSectionUno">
 	        <h3>Quiénes Somos</h3>
 	        <p>Hola! En Pet Shop nuestra misión es multiplicar los momentos compartidos entre las mascotas y sus dueños. </p>
         <div id="divSectionDos">
 	        <article>
-	        	<img src="../static/images/Cat.jpg">
+	        	<img th:src="@{/images/Cat.jpg}">
 	        </article>
 	        <article>
 	            <p>Si, como nosotros, considerás que tus mascotas son parte de tu familia, <b>¡llegaste al lugar correcto!</b></p>
@@ -52,8 +40,6 @@
             <p>Pet Shop trabaja de forma personalizada con sus clientes. Despues de cada pedido nuestros representantes se comunican para convenir el medio de pago.</p>
         </article>
     </aside>
-		<footer> 
-			<p> Copyright 2023 - Pet Shop - Diseñado por Grupo 7 - Jujuy - República Argentina</p>
-		</footer>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
 	</body>
 </html>
