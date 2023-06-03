@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=devic.width,initial-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Sucursales</title>
-		<link rel="stylesheet" type="text/css" href="../static/css/estilos.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
 	</head>
 	
 	<body class="body-branches">
 		<div id="container">
-		<header th:replace="~{layouts/header :: header}"></header>
-	</div>
+			<header th:replace="~{layouts/header :: header}"></header>
+		</div>
 		<h1 class="title-branches">Sucursales</h1>
     <section id="content-branches" class="section-branches">
-		<a href="@{/sucursal/nuevo}"> Nueva Sucursal </a>
+		<a th:href="@{/sucursal/nuevo}"> Nueva Sucursal </a>
 		
 		<table>
 			<tr>
@@ -40,41 +40,7 @@
 			</tr>
 			
 		</table>
-		
-       <!-- <div class="card-branch">
-            <article>
-                <h3 class="card-head-branch"><b>Sucursal Principal</b></h3>
-                <ul>
-                    <li>Dirección: 3915 Av. General Belgrano</li>
-                    <li>Telefono de Contacto: 388-4999999</li>
-                    <li>Horario de atencion: Lunes a viernes: 9:00 a.m. a 8 p.m.<br>
-                    <li>Sabados a domingo: 9:00 a.m. a 12:30 p.m.</li>
-                </ul>
-            </article>
-        </div>
-        <div class="card-branch">
-            <article>
-                <h3 class="card-head-branch"><b>Segunda Sucursal</b></h3>
-                <ul>
-                    <li>Dirección: 542 Av. San Martin</li>
-                    <li>Telefono de Contacto: 388-5888888</li>
-                    <li>Horario de atencion: Lunes a viernes: 9:00 a.m. a 8 p.m.<br>
-                    <li>Sabados: 9:00 a.m. a 12:30 p.m.</li>
-                </ul>
-            </article>
-        </div>
-        <div class="card-branch">
-            <article>
-                <h3 class="card-head-branch"><b>Tercera Sucursal</b></h3>
-                <ul>
-                    <li>Dirección: 712 Sarmiento</li>
-                    <li>Telefono de Contacto: 388-6777777</li>
-                    <li>Horario de atencion: Lunes a viernes: 9:00 a.m. a 8 p.m.<br>
-                    <li>Sabados: 9:00 a.m. a 12:30 p.m.</li>
-                </ul>
-            </article>
-        </div> -->
-
     </section>
+    	<footer th:replace="~{layouts/footer :: footer}"></footer>
 	</body>
 </html>

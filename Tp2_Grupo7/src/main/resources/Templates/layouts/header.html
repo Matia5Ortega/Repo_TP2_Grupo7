@@ -1,14 +1,20 @@
-<header>
-    <h1>Pet Shop</h1>
-    <img src="../static/images/Pet Shop.jpg" alt="PetShop" title="Siempre pensando en tu mascota">
-    <nav id="menuPrincipal">
-		<ul>
-		  <li><a th:href="@{/inicio}" target="_blank">Inicio</a></li>
-		  <li><a th:href="@{/productos}" target="_blank">Productos</a></li>
-		  <li><a th:href="@{/servicios}" target="_blank">Servicio de paseos</a></li>
-		  <li><a th:href="@{/consejos_de_salud}" target="_blank">Consejos de salud</a></li>
-		  <li><a th:href="@{/sucursal/listado}" target="_blank">Sucursales</a></li>		
-		  <li><a th:href="@{/contactanos}" target="_blank">Contacto</a></li>
-		</ul>
-    </nav>
-</header>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<header th:fragment="header">
+	    <h1>Pet Shop</h1>
+	    <img th:src="@{/images/Pet Shop.jpg}" alt="PetShop" title="Siempre pensando en tu mascota">
+	    <nav id="menuPrincipal">
+			<ul>
+			  <li><a th:href="@{/inicio}" target="_blank">Inicio</a></li>
+			  <li><a th:href="@{/productos}" target="_blank">Productos</a></li>
+			  <li><a th:href="@{/servicios}" target="_blank">Servicio de paseos</a></li>
+			  <li><a th:href="@{/consejos_de_salud}" target="_blank">Consejos de salud</a></li>
+			  <li><a th:href="@{/sucursal/listado}" target="_blank">Sucursales</a></li>		
+			  <li><a th:href="@{/contactanos}" target="_blank">Contacto</a></li>
+			</ul>
+	    </nav>
+	</header>
+</html>
