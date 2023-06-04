@@ -27,7 +27,7 @@ public class SucursalController {
 	@GetMapping("/nuevo")
 	public String getNuevaSucursalPage(Model model) {
 		boolean edicion = false;
-		model.addAttribute("sucursales", new Sucursal());
+		model.addAttribute("sucursal", new Sucursal());
 		model.addAttribute("edicion", edicion);
 		return "nueva_sucursal";
 	}
