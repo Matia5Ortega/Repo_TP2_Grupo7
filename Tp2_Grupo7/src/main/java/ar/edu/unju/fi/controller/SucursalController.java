@@ -26,9 +26,9 @@ public class SucursalController {
 	
 	@GetMapping("/nuevo")
 	public String getNuevaSucursalPage(Model model) {
-		boolean edicion = false;
 		model.addAttribute("sucursal", new Sucursal());
-		model.addAttribute("edicion", edicion);
+		model.addAttribute("edicion", false);
+		
 		return "nueva_sucursal";
 	}
 	
@@ -42,11 +42,9 @@ public class SucursalController {
 	
 	@GetMapping("/modificar/{id}")
 	public String getModificarSucursalPage(Model model, @PathVariable(value="id")int id) {
-		
 		Sucursal outSucursal = listaSucursales.buscarSucursalById(id);
-		boolean edicion = true;
 		model.addAttribute("sucursal", outSucursal);
-		model.addAttribute("edicion", edicion);
+		model.addAttribute("edicion", true);
 		
 		return "nueva_sucursal";
 	}

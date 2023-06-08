@@ -11,9 +11,9 @@
 		<div id="container">
 			<header th:replace="~{layouts/header :: header}"></header>
 		</div>
-		<h1>Nuevo Producto</h1>
+		<h1 th:text="${edicion}?'Modificar Producto':'Nuevo Producto'"></h1>
 		<section id="content">
-			<form  th:action="@{/productos/guardar}" th:object="${producto}" method="post">
+			<form  th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${producto}" method="post">
 				<label for="nombre">Nombre</label>
 				<input type="text" id="nombre" name="producto_nombre" th:field="*{nombre}"><br>
 				<label for="codigo">Código</label>
@@ -26,7 +26,7 @@
 				<input type="number" id="descuento" name="producto_descuento" th:field="*{descuento}"><br>
 				<label for="descripcion">Descripción</label>
 				<input type="text" id="descripcion" name="producto_descripcion" th:field="*{descripcion}"><br><br>
-				<input type="submit" class="button" value="Guardar">
+				<input type="submit" class="button" th:value="${edicion}?'Modificar':'Guardar'">
 			</form>
 		</section>
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
