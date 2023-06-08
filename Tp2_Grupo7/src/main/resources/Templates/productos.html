@@ -23,6 +23,8 @@
   		<p th:text="${producto.precio}"></p>
   		<strong>Precio con descuento</strong>
   		<p th:text="${producto.calcularDescuento}"></p>
+  		<a th:href="@{/productos/modificar/}+${producto.codigo}">Editar</a>
+  		<a th:href="@{/productos/eliminar/}+${producto.codigo}">Eliminar</a>
   	</li>
   </ul>
   

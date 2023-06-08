@@ -11,9 +11,11 @@
 	<div id="container">
 		<header th:replace="~{layouts/header :: header}"></header>
 	</div>
-	<h1>Nueva Sucursal</h1>
+	<h1 th:text="${edicion}?'Modificar Sucursal':'Nueva Sucursal'">Nueva Sucursal</h1>
 	<section id="content">
-		<form th:action="@{/sucursal/guardar}" th:object="${sucursal}" method="post">
+		<form th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
+			<label for="id">Codigo de Sucursal</label>
+			<input type="number" id="id" name="sucursal_id" th:field="*{id}"><br>
 			<label for="nombre">Nombre</label>
 			<input type="text" id="nombre" name="sucursal_nombre" th:field="*{nombre}"><br>
 			<label for="direccion">Dirección</label>
@@ -30,7 +32,7 @@
 			<input type="text" id="email" name="sucursal_email" th:field="*{email}"><br>
 			<label for="telefono">Teléfono</label>
 			<input type="text" id="telefono" name="sucursal_telefono" th:field="*{telefono}"><br><br>
-			<input type="submit" class="button" value="Guardar">
+			<input type="submit" class="button" th:value="${edicion}?'Modificar':'Guardar'">
 		</form>
 	</section>
     <footer th:replace="~{layouts/footer :: footer}"></footer>

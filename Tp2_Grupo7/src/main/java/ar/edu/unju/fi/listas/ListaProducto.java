@@ -23,6 +23,15 @@ public class ListaProducto {
 	public void setProductos(List<Producto> productos) {
 		this.productos = productos;
 	}
+	
+	public Producto buscarProductoByCodigo(int codigo) {
+		for(Producto p : this.productos) {
+			if(p.getCodigo() == codigo) {
+				return p;
+			}
+		}
+		return null;
+	}
 
 		
 }
