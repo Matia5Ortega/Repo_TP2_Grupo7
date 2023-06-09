@@ -4,15 +4,32 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Sucursal {
 	
 	private int id;
+	
+	@NotEmpty(message = "El nombre no puede estar vacío")
     private String nombre;
+    
+	@NotEmpty(message = "La dirección no puede estar vacía")
     private String direccion;
+    
+	@NotEmpty(message = "La provincia no puede estar vacía")
     private String provincia;
-    @DateTimeFormat(pattern="dd/MM/yyyy")
+    
+	@DateTimeFormat(pattern="dd/MM/yyyy")
     private LocalDate fechaInicio;
+    
+	@Email(message = "El email no es válido")
     private String email;
+    
+	@NotEmpty(message = "El teléfono no puede estar vacío")
+	@Size(min = 10, max = 15, message = "El teléfono debe tener entre 10 y 15 caracteres")
     private String telefono;
     
     // Constructor parametrizado

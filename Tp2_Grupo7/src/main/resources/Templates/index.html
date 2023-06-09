@@ -23,7 +23,7 @@
                 <article>
                     <p>Si, como nosotros, considerás que tus mascotas son parte de tu familia, <b>¡llegaste al lugar correcto!</b></p>
                     <p>Nuestra propuesta nace de las ganas de compartir la vida cotidiana con nuestros perros y gatos: participándolos de nuestras actividades, buscando nuevas para hacer juntos, y siempre pensando en el bienestar tanto de las personas como de los animales.</p>
-                    <p>Para  eso, ofrecemos una selección de accesorios para las mascotas con foco en la comodidad y el uso. A sus humanos, por su parte, les ponemos a disposición la practicidad de nuestra tienda online, asesoría y recomendaciones para elegir lo que precisan según sus necesidades y el estilo de vida de su familia.</p>
+                    <p>Para eso, ofrecemos una selección de accesorios para las mascotas con foco en la comodidad y el uso. A sus humanos, por su parte, les ponemos a disposición la practicidad de nuestra tienda online, asesoría y recomendaciones para elegir lo que precisan según sus necesidades y el estilo de vida de su familia.</p>
                 </article>
             </div>
         </div>
@@ -55,5 +55,13 @@
     </aside>
     <footer th:replace="~{layouts/footer :: footer}"></footer>
     <script src="/webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    
+    <!-- Mensajes de validación -->
+    <div th:if="${#fields.hasErrors()}" class="alert alert-danger">
+        <ul>
+            <li th:each="error : ${#fields.errors()}" th:text="${error}"></li>
+        </ul>
+    </div>
 </body>
 </html>
+

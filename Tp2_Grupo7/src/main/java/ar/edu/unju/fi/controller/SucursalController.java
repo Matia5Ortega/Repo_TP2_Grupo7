@@ -2,6 +2,7 @@ package ar.edu.unju.fi.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.listas.*;
 import ar.edu.unju.fi.model.Sucursal;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/sucursal")
@@ -33,11 +36,18 @@ public class SucursalController {
 	}
 	
 	@PostMapping("/guardar")
-	public ModelAndView guardarSucursalPage(@ModelAttribute("sucursal")Sucursal sucursal) {
-		ModelAndView modelView = new ModelAndView("sucursales");
-		listaSucursales.getSucursales().add(sucursal);
-		modelView.addObject("sucursales",listaSucursales.getSucursales());
-		return modelView;
+	public ModelAndView guardarSucursalPage(@Valid @ModelAttribute("sucursal") Sucursal sucursal, BindingResult result) {
+		if (result.hasErrors()) {
+			ModelAndView errorModelView = new ModelAndView("nueva_sucursal");
+			errorModelView.addObject("sucursal", sucursal);
+			errorModelView.addObject("edicion", false);
+			return errorModelView;
+		} else {
+			ModelAndView successModelView = new ModelAndView("sucursales");
+			listaSucursales.getSucursales().add(sucursal);
+			successModelView.addObject("sucursales", listaSucursales.getSucursales());
+			return successModelView;
+		}
 	}
 	
 	@GetMapping("/modificar/{id}")
