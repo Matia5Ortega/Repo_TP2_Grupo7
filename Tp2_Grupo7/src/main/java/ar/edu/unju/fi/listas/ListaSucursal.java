@@ -24,8 +24,8 @@ public class ListaSucursal {
 		
 		this.sucursales = new ArrayList<>();
 		this.sucursales.add(new Sucursal(1, "sucursal principal", "3915 Av General Belgrano", "Jujuy", LocalDate.now(), "sucursalPrincipal@gmail.com", "388-4999999" ));
-		this.sucursales.add(new Sucursal(1, "segunda sucursal", "542 Av San Martin", "Jujuy", LocalDate.now(), "segundaSucursal.com", "388-49777777" ));
-		this.sucursales.add(new Sucursal(1, "tercera sucursal", "712 Sarmiento", "Jujuy", LocalDate.now(), "terceraSucursal@gmail.com", "388-4988888" ));
+		this.sucursales.add(new Sucursal(2, "segunda sucursal", "542 Av San Martin", "Jujuy", LocalDate.now(), "segundaSucursal.com", "388-49777777" ));
+		this.sucursales.add(new Sucursal(3, "tercera sucursal", "712 Sarmiento", "Jujuy", LocalDate.now(), "terceraSucursal@gmail.com", "388-4988888" ));
 	}
 	
 	public Sucursal buscarSucursalById(int id) {
@@ -39,4 +39,5 @@ public class ListaSucursal {
 		
 		return null;
 	}
+	
 }

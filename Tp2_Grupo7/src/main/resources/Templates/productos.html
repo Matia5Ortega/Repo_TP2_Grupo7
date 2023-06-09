@@ -11,7 +11,24 @@
  <header th:replace="~{layouts/header :: header}"></header>
  <section id="productos">
   <h2>Productos para Mascotas</h2>
+  <a th:href="@{/productos/nuevo}">Nuevo Producto</a>
   <ul>
+  	<li th:each="producto: ${productos}">
+  		<h3 th:text="${producto.nombre}"></h3>
+  		<strong>Descripcion</strong>
+  		<p th:text="${producto.descripcion}"></p>
+  		<strong>Categoria</strong>
+  		<p th:text="${producto.categoria}"></p>
+  		<strong>Precio Normal</strong>
+  		<p th:text="${producto.precio}"></p>
+  		<strong>Precio con descuento</strong>
+  		<p th:text="${producto.calcularDescuento}"></p>
+  		<a th:href="@{/productos/modificar/}+${producto.codigo}">Editar</a>
+  		<a th:href="@{/productos/eliminar/}+${producto.codigo}">Eliminar</a>
+  	</li>
+  </ul>
+  
+  <!-- <ul>
     <li>
       <img th:src="@{/images/Alimento Can Club.jpg}" alt="Alimento Can Club">
       <h3>Alimento Can Club</h3>
@@ -171,7 +188,7 @@
 		 Elimina mugre y bacterias, a la vez que limpia y deodoriza, dejando un agradable aroma cítrico. 
 		 Ideales para limpiar zona interna de las orejas y almohadillas de patitas.</p>
     </li>
-  </ul>
+  </ul>-->
 </section>
 <footer th:replace="~{layouts/footer :: footer}"></footer>
 </body>
