@@ -1,63 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contactanos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
 </head>
 
-<body>
+<body id="body-contact">
+	<header th:replace="~{layouts/header :: header}"></header>
     <section>
-        <div>
-            <h1>Contáctenos</h1>
-            <p>3915 Av. General Belgrano, 388-4999999</p>
-            <p>Lunes a viernes: 9:00 a.m a 8:00 p.m.,</p>
-            <p>Sábado a domingo: 9:00 a.m a 12:30 p.m.</p>
-            <a href="#">contactos@mail.com.ar</a>
+        <div class="form">
+            <div class="form-panel one">
+                <div class="form-header">
+                    <h1>Contáctenos</h1>
+                </div>
+                <div class="form-content">
+                    <p>3915 Av. General Belgrano, 388-4999999</p>
+                    <p>Lunes a viernes: 9:00 a.m a 8:00 p.m.,</p>
+                    <p>Sábado a domingo: 9:00 a.m a 12:30 p.m.</p>
+                    <a id="form-content-email">contactos@mail.com.ar</a>
 
-            <ul>
-                <li>
-                    <a href="#">Facebook</a>
-                </li>
-                <li>
-                    <a href="#">Instagram</a>
-                </li>
-                <li>
-                    <a href="#">Twitter</a>
-                </li>
-            </ul>
-            <fieldset>
-                <form name="contactanosForm" id="contactanosForm" method="get">
-                    <div>
-                        <label>Nombre: </label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
-                    </div>
-                    <br>
-                    <div>
-                        <label>Email: </label>
-                        <input type="email" name="email" id="email" placeholder="Ingrese un email válido">
-                    </div>
-                    <br>
-                    <div>
-                        <label>Ciudad: </label>
-                        <input type="text" name="ciudad" id="ciudad" placeholder="Ingrese su ciudad">
-                    </div>
-                    <br>
-                    <div>
-                        <label>Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea>
-                        </textarea>
-                    </div>
-                    <br>
-                    <div>
-                        <input type="submit" value="Enviar">
-                    </div>
-                </form>
-            </fieldset>
+					<div class="form-link-contact">
+					  <ul>
+                        <li>
+							<div class="social-signin facebook">
+								<a href="#">Facebook</a>
+							</div>
+                        </li>
+                        <li>
+							<div class="social-signin instragram">
+								<a href="#">Instagram</a>
+							</div>
+                        </li>
+                        <li>
+							<div class="social-signin twitter">
+					            <a href="#">Twitter</a>			
+							</div>
+                        </li>
+                      </ul>
+					</div>
+
+                    <form name="contactanosForm" id="contactanosForm" method="get">
+                        <div class="form-group">
+                            <label>Nombre: </label>
+                            <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Email: </label>
+                            <input type="email" name="email" id="email" placeholder="Ingrese un email válido">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Ciudad: </label>
+                            <input type="text" name="ciudad" id="ciudad" placeholder="Ingrese su ciudad">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea>
+                            </textarea>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="submit" value="Enviar">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
         </div>
     </section>
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
 </body>
 
 </html>
