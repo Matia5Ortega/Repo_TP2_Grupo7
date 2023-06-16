@@ -3,16 +3,11 @@ package ar.edu.unju.fi.model;
 import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
-<<<<<<< HEAD
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-=======
 @Component
->>>>>>> branch 'Tp5_v1.0.0' of https://github.com/Matia5Ortega/Repo_TP2_Grupo7.git
 public class Sucursal {
 	
 	private int id;
