@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=devic.width,initial-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Servicio de Paseo</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
 	</head>
-	<body>
-        <h1>Servicio de Paseo</h1>
-        <table border>
+	<body class="body-dog-walking-service">
+		<header th:replace="~{layouts/header :: header}"></header>
+		<h1 class="title-dog-walking-service">Servicio de Paseo</h1>
+		<div class="container-dog-walking-service">
+			<div class="table-container">
+				<table border>
         		<thead>
         			<tr>
 						<th>Día</th>
 						<th>Lunes</th>   
 						<th>Martes</th>  
-						<th>Miercoles</th>  
+						<th>Miércoles</th>  
 						<th>Jueves</th>  
 						<th>Viernes</th>  
-						<th>Sabado</th>      			
+						<th>Sábado</th>      			
         			</tr>
         		</thead>
         		<tbody>
@@ -40,7 +44,9 @@
         				<td>Roberto Vazquez</td>
         			</tr>
         		</tbody>	
-        	</table>	
-        
+        	</table>
+			</div>
+		</div>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>        
 	</body>
 </html>

@@ -1,18 +1,34 @@
 package ar.edu.unju.fi.model;
 
 import java.time.LocalDate;
-
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
+@Component
 public class Sucursal {
 	
 	private int id;
+	
+	@NotEmpty(message = "El nombre no puede estar vacío")
     private String nombre;
+    
+	@NotEmpty(message = "La dirección no puede estar vacía")
     private String direccion;
+    
+	@NotEmpty(message = "La provincia no puede estar vacía")
     private String provincia;
-    @DateTimeFormat(pattern="dd/MM/yyyy")
+    
+	@DateTimeFormat(pattern="dd/MM/yyyy")
     private LocalDate fechaInicio;
+    
+	@Email(message = "El email no es válido")
     private String email;
+    
+	@NotEmpty(message = "El teléfono no puede estar vacío")
+	@Size(min = 10, max = 15, message = "El teléfono debe tener entre 10 y 15 caracteres")
     private String telefono;
     
     // Constructor parametrizado

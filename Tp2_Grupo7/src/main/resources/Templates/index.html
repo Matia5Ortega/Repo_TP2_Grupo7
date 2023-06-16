@@ -1,45 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>PetShop - Inicio</title>
-		<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
-	</head>
-	<body class="body-index">
-		<header th:replace="~{layouts/header :: header}"></header>
-    <section>
-    	<div id="divSectionUno">
-	        <h3>Quiénes Somos</h3>
-	        <p>Hola! En Pet Shop nuestra misión es multiplicar los momentos compartidos entre las mascotas y sus dueños. </p>
-        <div id="divSectionDos">
-	        <article>
-	        	<img th:src="@{/images/Cat.jpg}">
-	        </article>
-	        <article>
-	            <p>Si, como nosotros, considerás que tus mascotas son parte de tu familia, <b>¡llegaste al lugar correcto!</b></p>
-	            <p>Nuestra propuesta nace de las ganas de compartir la vida cotidiana con nuestros perros y gatos: participándolos de nuestras actividades, buscando nuevas para hacer juntos, y siempre pensando en el bienestar tanto de las personas como de los animales.</p>
-	            <p>Para eso, ofrecemos una selección de accesorios para las mascotas con foco en la comodidad y el uso. A sus humanos, por su parte, les ponemos a disposición la practicidad de nuestra tienda online, asesoría y recomendaciones para elegir lo que precisan según sus necesidades y el estilo de vida de su familia.</p>
-	        </article>
-	    </div>
-	    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PetShop - Inicio</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+</head>
+<body class="body-index">
+    <header th:replace="~{layouts/header :: header}"></header>
+    <section class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Quiénes Somos</h3>
+                <p>Hola! En Pet Shop nuestra misión es multiplicar los momentos compartidos entre las mascotas y sus dueños.</p>
+            </div>
+            <div class="col-lg-6">
+                <article>
+                    <img th:src="@{/images/Cat.jpg}" class="img-fluid">
+                </article>
+                <article>
+                    <p>Si, como nosotros, considerás que tus mascotas son parte de tu familia, <b>¡llegaste al lugar correcto!</b></p>
+                    <p>Nuestra propuesta nace de las ganas de compartir la vida cotidiana con nuestros perros y gatos: participándolos de nuestras actividades, buscando nuevas para hacer juntos, y siempre pensando en el bienestar tanto de las personas como de los animales.</p>
+                    <p>Para eso, ofrecemos una selección de accesorios para las mascotas con foco en la comodidad y el uso. A sus humanos, por su parte, les ponemos a disposición la practicidad de nuestra tienda online, asesoría y recomendaciones para elegir lo que precisan según sus necesidades y el estilo de vida de su familia.</p>
+                </article>
+            </div>
+        </div>
     </section>
-    <aside>
-        <h4>Últimas noticias</h4>
-        <article>
-            <h6>ENVÍOS A TODO EL PAÍS</h6>
-            <p>Los envíos lo convenimos con los clientes – Enviamos a la sucursal de Correo Argentino de tu ciudad.</p>
-        </article>
-        <article>
-            <h6>COMPRÁ A LOS MEJORES PRECIOS!</h6>
-            <p>Venta directa a Pet Shops, Veterinarias, Lavaderos Caninos y Comercios.</p>
-        </article>
-        <article>
-            <h6>MEDIOS DE PAGO</h6>
-            <p>Pet Shop trabaja de forma personalizada con sus clientes. Despues de cada pedido nuestros representantes se comunican para convenir el medio de pago.</p>
-        </article>
+    <aside class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4>Últimas noticias</h4>
+                <article>
+                    <h6>ENVÍOS A TODO EL PAÍS</h6>
+                    <p>Los envíos lo convenimos con los clientes – Enviamos a la sucursal de Correo Argentino de tu ciudad.</p>
+                </article>
+            </div>
+            <div class="col-lg-4">
+                <h4>Últimas noticias</h4>
+                <article>
+                    <h6>COMPRÁ A LOS MEJORES PRECIOS!</h6>
+                    <p>Venta directa a Pet Shops, Veterinarias, Lavaderos Caninos y Comercios.</p>
+                </article>
+            </div>
+            <div class="col-lg-4">
+                <h4>Últimas noticias</h4>
+                <article>
+                    <h6>MEDIOS DE PAGO</h6>
+                    <p>Pet Shop trabaja de forma personalizada con sus clientes. Después de cada pedido nuestros representantes se comunican para convenir el medio de pago.</p>
+                </article>
+            </div>
+        </div>
     </aside>
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
-	</body>
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
 </html>

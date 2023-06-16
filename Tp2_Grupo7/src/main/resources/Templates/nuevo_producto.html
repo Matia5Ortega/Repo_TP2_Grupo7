@@ -2,33 +2,48 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
     	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Nuevo Producto</title>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
 	<body>
-		<div id="container">
+	<div class="container-sm">
+		<div class="conteiner-fluid" id="container">
 			<header th:replace="~{layouts/header :: header}"></header>
 		</div>
-		<h1>Nuevo Producto</h1>
+		<div class="row justify-content-center">
+			<h1 th:text="${edicion}?'Modificar Producto':'Nuevo Producto'"></h1>
+		</div>
 		<section id="content">
-			<form  th:action="@{/productos/guardar}" th:object="${producto}" method="post">
+			<form  th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${producto}" method="post">
 				<label for="nombre">Nombre</label>
-				<input type="text" id="nombre" name="producto_nombre" th:field="*{nombre}"><br>
+				<input type="text" id="nombre" name="producto_nombre" th:field="*{nombre}" th:disable="${edicion}?true:false"><br>
+				<!-- <input type="hidden" id="nombre" name="producto_nombre" th:field="*{nombre}" th:if="${edicion}">-->
+				<div class="form-text danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 				<label for="codigo">Código</label>
 				<input type="number" id="codigo" name="producto_codigo" th:field="*{codigo}"><br>
+				<div th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
 				<label for="precio">Precio</label>
 				<input type="number" id="precio" name="producto_precio" th:field="*{precio}"><br>
+				<div th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
 				<label for="categoria">Categoria</label>
 				<input type="text" id="categoria" name="producto_categoria" th:field="*{categoria}"><br>
+				<div th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></div>
 				<label for="descuento">Descuento</label>
 				<input type="number" id="descuento" name="producto_descuento" th:field="*{descuento}"><br>
+				<div th:if="${#fields.hasErrors('descuento')}" th:errors="*{descuento}"></div>
 				<label for="descripcion">Descripción</label>
-				<input type="text" id="descripcion" name="producto_descripcion" th:field="*{descripcion}"><br><br>
-				<input type="submit" class="button" value="Guardar">
+				<input type="text" id="descripcion" name="producto_descripcion" th:field="*{descripcion}"><br>
+				<div th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div><br><br>
+				<input type="submit" class="button" th:value="${edicion}?'Modificar':'Guardar'">
 			</form>
 		</section>
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		<div class="conteiner-fluid">
+			<footer th:replace="~{layouts/footer :: footer}"></footer>
+		</div>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	</div>
 	</body>
 </html>
