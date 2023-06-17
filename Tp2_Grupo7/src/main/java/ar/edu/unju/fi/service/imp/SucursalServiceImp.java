@@ -2,9 +2,12 @@ package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import ar.edu.unju.fi.model.Sucursal;
 import ar.edu.unju.fi.service.ISucursalService;
 
+@Service
 public class SucursalServiceImp implements ISucursalService {
 
     private List<Sucursal> listaSucursales;
