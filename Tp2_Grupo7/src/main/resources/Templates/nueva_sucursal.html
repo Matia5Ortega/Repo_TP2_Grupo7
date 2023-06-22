@@ -6,35 +6,71 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nueva Sucursal</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
 	<div id="container">
 		<header th:replace="~{layouts/header :: header}"></header>
 	</div>
-	<h1 th:text="${edicion}?'Modificar Sucursal':'Nueva Sucursal'">Nueva Sucursal</h1>
-	<section id="content">
-		<form th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
-			<label for="id">Codigo de Sucursal</label>
-			<input type="number" id="id" name="sucursal_id" th:field="*{id}"><br>
-			<label for="nombre">Nombre</label>
-			<input type="text" id="nombre" name="sucursal_nombre" th:field="*{nombre}"><br>
-			<label for="direccion">Dirección</label>
-			<input type="text" id="direccion" name="sucursal_direccion" th:field="*{direccion}"><br>
-			<label for="provincia">Provincia</label>
-			<select id="provincia" name="sucursal_provincia" th:field="*{provincia}">
-				<option value="SALTA">Salta</option>
-				<option value="JUJUY">Jujuy</option>
-				<option value="TUCUMAN">Tucumán</option>
-			</select><br>
-			<label for="fecha">Fecha de Inicio</label>
-			<input type="date" id="fecha" name="sucursual_fecha" th:field="*{fechaInicio}"><br>
-			<label for="email">Email</label>
-			<input type="text" id="email" name="sucursal_email" th:field="*{email}"><br>
-			<label for="telefono">Teléfono</label>
-			<input type="text" id="telefono" name="sucursal_telefono" th:field="*{telefono}"><br><br>
-			<input type="submit" class="button" th:value="${edicion}?'Modificar':'Guardar'">
-		</form>
-	</section>
-    <footer th:replace="~{layouts/footer :: footer}"></footer>
+	<main class="container-fluid">
+		<h1 class="text-center" th:text="${edicion}?'Modificar Sucursal':'Nueva Sucursal'">Nueva Sucursal</h1>
+		<div class="row justify-content-center">
+			<div class="col-5 m-5">
+				<form th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
+					<div class="row mb-3">
+						<label for="id" class="col-sm-3 col-form-label">Codigo</label>
+						<div class="col-sm-9">
+							<input type="number" id="id" name="sucursal_id" class="form-control" th:field="*{id}">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
+						<div class="col-sm-9">
+							<input type="text" id="nombre" name="sucursal_nombre" class="form-control" th:field="*{nombre}">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="direccion" class="col-sm-3 col-form-label">Dirección</label>
+						<div class="col-sm-9">
+							<input type="text" id="direccion" name="sucursal_direccion" class="form-control" th:field="*{direccion}">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="provincia" class="col-sm-3 col-form-label">Provincia</label>
+						<div class="col-sm-9">
+							<select id="provincia" name="sucursal_provincia" class="form-control" th:field="*{provincia}">
+								<option value="SALTA">Salta</option>
+								<option value="JUJUY">Jujuy</option>
+								<option value="TUCUMAN">Tucumán</option>
+							</select>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="fecha" class="col-sm-3 col-form-label">Fecha de Inicio</label>
+						<div class="col-sm-9">
+							<input type="date" id="fecha" name="sucursual_fecha" class="form-control" th:field="*{fechaInicio}">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="email" class="col-sm-3 col-form-label">Email</label>
+						<div class="col-sm-9">
+							<input type="text" id="email" name="sucursal_email" class="form-control" th:field="*{email}">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="telefono" class="col-sm-3 col-form-label">Teléfono</label>
+						<div class="col-sm-9">
+							<input type="text" id="telefono" name="sucursal_telefono" class="form-control" th:field="*{telefono}">
+						</div>
+					</div>
+					<div class="d-grid gap-2 col-4 mx-auto mt-5">
+						<input type="submit" class="btn btn-primary" th:value="${edicion}?'Modificar':'Guardar'">
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
