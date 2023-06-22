@@ -6,12 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
   	<title>Productos</title>
   	<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+  	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
  <header th:replace="~{layouts/header :: header}"></header>
  <section id="productos">
   <h2>Productos para Mascotas</h2>
-  <a th:href="@{/productos/nuevo}">Nuevo Producto</a>
+  <a th:href="@{/productos/nuevo}" class="btn btn-primary m-3" role="button">Nuevo Producto</a>
   <ul>
   	<li th:each="producto: ${productos}">
   		<h3 th:text="${producto.nombre}"></h3>
@@ -191,5 +192,6 @@
   </ul>-->
 </section>
 <footer th:replace="~{layouts/footer :: footer}"></footer>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

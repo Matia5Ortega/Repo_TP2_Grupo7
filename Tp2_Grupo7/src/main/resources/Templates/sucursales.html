@@ -6,6 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Sucursales</title>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
 	
 	<body class="body-branches">
@@ -14,9 +15,9 @@
 		</div>
 		<h1 class="title-branches">Sucursales</h1>
     <section id="content-branches" class="section-branches">
-		<a th:href="@{/sucursal/nuevo}"> Nueva Sucursal </a>
+		<a th:href="@{/sucursal/nuevo}" class="btn btn-dark m-3" role="button"> Nueva Sucursal </a>
 		
-		<table>
+		<table class="table m-3">
 			<tr>
 				<th>Nombre</th>
 				<th>Dirección</th>
@@ -42,5 +43,6 @@
 		</table>
     </section>
     	<footer th:replace="~{layouts/footer :: footer}"></footer>
+    	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</body>
 </html>

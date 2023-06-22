@@ -31,18 +31,20 @@ public class Producto {
 	@NotEmpty(message="Debe ingresar una descripción.")
 	@Size(min=5, max=250, message="La descripción debe tener entre 5 y 250 caracteres.")
 	private String descripcion;
+	private String imagen;
 	
 	public Producto() {
 		
 	}
 
-	public Producto(String nombre, int codigo, double precio, String categoria, int descuento, String descripcion) {
+	public Producto(String nombre, int codigo, double precio, String categoria, int descuento, String descripcion,String imagen) {
 		this.nombre = nombre;
 		this.codigo = codigo;
 		this.precio = precio;
 		this.categoria = categoria;
 		this.descuento = descuento;
 		this.descripcion = descripcion;
+		this.imagen = imagen;
 	}
 	
 	public String getNombre() {
@@ -82,6 +84,14 @@ public class Producto {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	public double calcularDescuento() {
