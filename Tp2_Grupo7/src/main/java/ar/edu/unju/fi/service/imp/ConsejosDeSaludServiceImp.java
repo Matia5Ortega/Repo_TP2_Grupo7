@@ -1,31 +1,30 @@
 package ar.edu.unju.fi.service.imp;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.listas.ListaConsejos;
 import ar.edu.unju.fi.model.ConsejosDeSalud;
 import ar.edu.unju.fi.service.IConsejosDeSaludService;
 
 @Service
 public class ConsejosDeSaludServiceImp implements IConsejosDeSaludService {
 
-    private List<ConsejosDeSalud> listaConsejos;
+    private ListaConsejos listaConsejos;
     private ConsejosDeSalud consejo;
 
     @Override
-    public List<ConsejosDeSalud> getLista() {
+    public ListaConsejos getLista() {
         return listaConsejos;
     }
 
     @Override
     public void guardar(ConsejosDeSalud consejo) {
-        listaConsejos.add(consejo);
+        listaConsejos.getConsejos().add(consejo);
     }
 
     @Override
     public ConsejosDeSalud getById(int id) {
-        for (ConsejosDeSalud c : listaConsejos) {
+        for (ConsejosDeSalud c : listaConsejos.getConsejos()) {
             if (c.getId() == id) {
                 return c;
             }
@@ -44,7 +43,7 @@ public class ConsejosDeSaludServiceImp implements IConsejosDeSaludService {
 
     @Override
     public void eliminar(ConsejosDeSalud consejo) {
-        listaConsejos.remove(consejo);
+        listaConsejos.getConsejos().remove(consejo);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class ConsejosDeSaludController {
     
     @GetMapping("/listado")
     public String getListaConsejosPage(Model model) {
-        model.addAttribute("consejos", consejosDeSaludService.getLista());
+        model.addAttribute("consejos", consejosDeSaludService.getLista().getConsejos());
         return "consejos";
     }
 
@@ -37,7 +37,7 @@ public class ConsejosDeSaludController {
     public ModelAndView guardarConsejoPage(@ModelAttribute("consejo") ConsejosDeSalud consejo) {
         ModelAndView modelView = new ModelAndView("consejos");
         consejosDeSaludService.guardar(consejo);
-        modelView.addObject("consejos", consejosDeSaludService.getLista());
+        modelView.addObject("consejos", consejosDeSaludService.getLista().getConsejos());
         return modelView;
     }
 
