@@ -1,12 +1,13 @@
 package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import ar.edu.unju.fi.listas.ListaProducto;
 import ar.edu.unju.fi.model.Producto;
 import ar.edu.unju.fi.service.IProductoService;
+import ar.edu.unju.fi.util.UploadFile;
 
 @Service
 public class ProductoServiceImp implements IProductoService {
@@ -15,12 +16,17 @@ public class ProductoServiceImp implements IProductoService {
 	private ListaProducto listaProductos;
 	@Autowired
 	private Producto producto;
+	@Autowired
+	private UploadFile uploadFile;
 	
 	public List<Producto> getLista() {
 		return listaProductos.getProductos();
 	}
 
-	public void guardar(Producto producto) {
+	public void guardar(Producto producto, MultipartFile image) throws Exception {
+		if (!image.isEmpty()) {
+			producto.setImagen(uploadFile.copy(image));
+		}
 		listaProductos.getProductos().add(producto);
 	}
 
@@ -28,7 +34,7 @@ public class ProductoServiceImp implements IProductoService {
 		return listaProductos.buscarProductoByCodigo(codigo);
 	}
 
-	public void modificar(Producto producto) {
+	public void modificar(Producto producto, MultipartFile image) throws Exception {
 		Producto p = listaProductos.buscarProductoByCodigo(producto.getCodigo());
 		p.setNombre(producto.getNombre());
 		p.setCodigo(producto.getCodigo());
@@ -36,6 +42,11 @@ public class ProductoServiceImp implements IProductoService {
 		p.setDescuento(producto.getDescuento());
 		p.setCategoria(producto.getCategoria());
 		p.setDescripcion(producto.getDescripcion());
+		if (!image.isEmpty()) {
+			if (p.getImagen() != null && p.getImagen().length() > 0)
+				uploadFile.delete(p.getImagen());
+			p.setImagen(uploadFile.copy(image));
+		}
 	}
 
 	public void eliminar(Producto producto) {
@@ -45,5 +56,4 @@ public class ProductoServiceImp implements IProductoService {
 	public Producto getProducto() {
 		return producto;
 	}
-	
 }
