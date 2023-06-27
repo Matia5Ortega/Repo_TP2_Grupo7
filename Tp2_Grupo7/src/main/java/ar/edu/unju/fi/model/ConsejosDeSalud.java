@@ -26,4 +26,8 @@ public class ConsejosDeSalud {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+	public int getId() {
+		return 0;
+	}
 }

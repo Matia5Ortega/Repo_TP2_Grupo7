@@ -6,13 +6,16 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Servicio de Paseo</title>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
 	<body class="body-dog-walking-service">
-		<header th:replace="~{layouts/header :: header}"></header>
-		<h1 class="title-dog-walking-service">Servicio de Paseo</h1>
+		<header class="navbar" th:replace="~{layouts/header :: header}"></header>
+		<div class="text-center">
+			<h1 class="text-center title-dog-walking-service">Servicio de Paseo</h1>
+		</div>
 		<div class="container-dog-walking-service">
 			<div class="table-container">
-				<table border>
+				<table class="table m-3">
         		<thead>
         			<tr>
 						<th>Día</th>
@@ -47,6 +50,9 @@
         	</table>
 			</div>
 		</div>
-		<footer th:replace="~{layouts/footer :: footer}"></footer>        
+		<div class="fixed-bottom">
+			<footer class="container-fluid" th:replace="~{layouts/footer :: footer}"></footer>        
+		</div>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</body>
 </html>
