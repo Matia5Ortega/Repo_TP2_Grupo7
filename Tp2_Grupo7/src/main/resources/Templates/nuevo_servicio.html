@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Nuevo Servicio De Paseo</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+	<header th:replace="~{layouts/header :: header}"></header>
+	<main class="container-fluid mb-5">
+		<div class="text-center">
+			<h1 th:text="${edicion}?'Modificar Servicio':'Nuevo Servicio'"></h1>
+		</div>
+		<div class="row justify-content-center">
+		<div class="col-5 m-5">
+			<form  th:action="${edicion}?@{/servicios/modificar}:@{/servicios/guardar}" th:object="${servicio}" method="post">
+				<div class="row mb-3">
+					<label for="id" class="col-sm-3 col-form-label">Identificador</label>
+					<div class="col-sm-9">
+						<input type="number" id="id" name="servicio_id" class="form-control" th:field="*{id}" th:disabled="${edicion}?true:false" th:classappend="${#fields.hasErrors('id')} ? 'is-invalid' : ''">
+						<input type="hidden" id="id" name="servicio_id" class="form-control" th:field="*{id}" th:if="${edicion}">
+						<div class="text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="nombrePaseador" class="col-sm-3 col-form-label">Nombre</label>
+					<div class="col-sm-9">
+						<input type="text" id="nombre" name="servicio_nombrePaseador" class="form-control" th:field="*{nombrePaseador}" placeholder="Ingrese el nombre del paseador" th:classappend="${#fields.hasErrors('nombrePaseador')} ? 'is-invalid' : ''">
+						<div class="text-danger" th:if="${#fields.hasErrors('nombrePaseador')}" th:errors="*{nombrePaseador}"></div>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="horario" class="col-sm-3 col-form-label">Horario Entrada</label>
+					<div class="col-sm-9">
+						<input type="datetime-local" id="horario" name="servicio_horario" class="form-control" th:field="*{fechaHoraPaseo}" th:classappend="${#fields.hasErrors('fechaHoraPaseo')} ? 'is-invalid' : ''">
+						<div class="text-danger" th:if="${#fields.hasErrors('fechaHoraPaseo')}" th:errors="*{fechaHoraPaseo}"></div>
+					</div>
+				</div>
+				<div class="d-grid gap-2 col-4 mx-auto">
+					<input type="submit" class="btn btn-primary" th:value="${edicion}?'Modificar':'Guardar'">
+				</div>
+			</form>
+		</div>
+		</div>
+	</main>
+	
+	<footer class="container-fluid" th:replace="~{layouts/footer :: footer}"></footer>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

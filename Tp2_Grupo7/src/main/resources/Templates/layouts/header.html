@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
 	<header class="container-fluid" th:fragment="header">
 	    <h1>Pet Shop</h1>
@@ -10,11 +13,12 @@
 			<ul>
 			  <li><a th:href="@{/inicio}" target="_blank">Inicio</a></li>
 			  <li><a th:href="@{/productos/listado}" target="_blank">Productos</a></li>
-			  <li><a th:href="@{/servicios}" target="_blank">Servicio de paseos</a></li>
+			  <li><a th:href="@{/servicios/listado}" target="_blank">Servicio de paseos</a></li>
 			  <li><a th:href="@{/consejos_de_salud}" target="_blank">Consejos de salud</a></li>
 			  <li><a th:href="@{/sucursal/listado}" target="_blank">Sucursales</a></li>		
 			  <li><a th:href="@{/contactanos}" target="_blank">Contacto</a></li>
 			</ul>
 	    </nav>
 	</header>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </html>
