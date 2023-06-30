@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.model.ConsejosDeSalud;
+import ar.edu.unju.fi.entity.ConsejosDeSalud;
 import ar.edu.unju.fi.service.IConsejosDeSaludService;
 
 @Controller
@@ -22,13 +22,13 @@ public class ConsejosDeSaludController {
     
     @GetMapping("/listado")
     public String getListaConsejosPage(Model model) {
-        model.addAttribute("consejos", consejosDeSaludService.getLista().getConsejos());
+        model.addAttribute("consejos", consejosDeSaludService.getListaActivos());
         return "consejos";
     }
 
     @GetMapping("/nuevo")
     public String getNuevoConsejoPage(Model model) {
-        model.addAttribute("consejo", consejosDeSaludService.getConsejo());
+        model.addAttribute("consejo", new ConsejosDeSalud());
         model.addAttribute("edicion", false);
         return "nuevo_consejo";
     }
@@ -37,12 +37,12 @@ public class ConsejosDeSaludController {
     public ModelAndView guardarConsejoPage(@ModelAttribute("consejo") ConsejosDeSalud consejo) {
         ModelAndView modelView = new ModelAndView("consejos");
         consejosDeSaludService.guardar(consejo);
-        modelView.addObject("consejos", consejosDeSaludService.getLista().getConsejos());
+        modelView.addObject("consejos", consejosDeSaludService.getListaActivos());
         return modelView;
     }
 
     @GetMapping("/modificar/{id}")
-    public String getModificarConsejoPage(Model model, @PathVariable(value = "id") int id) {
+    public String getModificarConsejoPage(Model model, @PathVariable(value = "id") Long id) {
         ConsejosDeSalud outConsejo = consejosDeSaludService.getById(id);
         model.addAttribute("consejo", outConsejo);
         model.addAttribute("edicion", true);
@@ -56,7 +56,7 @@ public class ConsejosDeSaludController {
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminarConsejoPage(Model model, @PathVariable(value = "id") int id) {
+    public String eliminarConsejoPage(Model model, @PathVariable(value = "id") Long id) {
         ConsejosDeSalud outConsejo = consejosDeSaludService.getById(id);
         consejosDeSaludService.eliminar(outConsejo);
         return "redirect:/consejos/listado";

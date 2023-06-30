@@ -1,20 +1,29 @@
 package ar.edu.unju.fi.service.imp;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.ConsejosDeSalud;
 import ar.edu.unju.fi.listas.ListaConsejos;
-import ar.edu.unju.fi.model.ConsejosDeSalud;
 import ar.edu.unju.fi.service.IConsejosDeSaludService;
 
 @Service
 public class ConsejosDeSaludServiceImp implements IConsejosDeSaludService {
 
+    @Autowired
     private ListaConsejos listaConsejos;
-    private ConsejosDeSalud consejo;
 
     @Override
-    public ListaConsejos getLista() {
-        return listaConsejos;
+    public List<ConsejosDeSalud> getLista() {
+        return listaConsejos.getConsejos();
+    }
+
+    @Override
+    public List<ConsejosDeSalud> getListaActivos() {
+        return listaConsejos.getConsejos().stream().filter(ConsejosDeSalud::isEstado).collect(Collectors.toList());
     }
 
     @Override
@@ -23,13 +32,8 @@ public class ConsejosDeSaludServiceImp implements IConsejosDeSaludService {
     }
 
     @Override
-    public ConsejosDeSalud getById(int id) {
-        for (ConsejosDeSalud c : listaConsejos.getConsejos()) {
-            if (c.getId() == id) {
-                return c;
-            }
-        }
-        return null;
+    public ConsejosDeSalud getById(Long id) {
+        return listaConsejos.getConsejos().stream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override
@@ -44,10 +48,5 @@ public class ConsejosDeSaludServiceImp implements IConsejosDeSaludService {
     @Override
     public void eliminar(ConsejosDeSalud consejo) {
         listaConsejos.getConsejos().remove(consejo);
-    }
-
-    @Override
-    public ConsejosDeSalud getConsejo() {
-        return consejo;
     }
 }

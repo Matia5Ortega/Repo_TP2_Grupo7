@@ -3,8 +3,11 @@ package ar.edu.unju.fi.listas;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unju.fi.model.ConsejosDeSalud;
+import org.springframework.stereotype.Component;
 
+import ar.edu.unju.fi.entity.ConsejosDeSalud;
+
+@Component
 public class ListaConsejos {
     private List<ConsejosDeSalud> consejos;
 
@@ -20,4 +23,3 @@ public class ListaConsejos {
         this.consejos = consejos;
     }
 }
-

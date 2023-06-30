@@ -1,18 +1,19 @@
 package ar.edu.unju.fi.service;
 
-import ar.edu.unju.fi.listas.ListaConsejos;
-import ar.edu.unju.fi.model.ConsejosDeSalud;
+import java.util.List;
+
+import ar.edu.unju.fi.entity.ConsejosDeSalud;
 
 public interface IConsejosDeSaludService {
-    ListaConsejos getLista();
+    List<ConsejosDeSalud> getLista();
+
+    List<ConsejosDeSalud> getListaActivos();
 
     void guardar(ConsejosDeSalud consejo);
 
-    ConsejosDeSalud getById(int id);
+    ConsejosDeSalud getById(Long id);
 
     void modificar(ConsejosDeSalud consejo);
 
     void eliminar(ConsejosDeSalud consejo);
-
-    ConsejosDeSalud getConsejo();
 }
