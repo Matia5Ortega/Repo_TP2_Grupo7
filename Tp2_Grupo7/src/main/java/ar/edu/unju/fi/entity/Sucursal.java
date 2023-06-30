@@ -1,42 +1,55 @@
 package ar.edu.unju.fi.entity;
 
 import java.time.LocalDate;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Component;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
-@Component
+@Entity
+@Table(name = "sucursales")
 public class Sucursal {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	
 	@NotEmpty(message = "El nombre no puede estar vacío")
+	@Column(name = "nombre")
     private String nombre;
     
 	@NotEmpty(message = "La dirección no puede estar vacía")
+	@Column(name = "direccion")
     private String direccion;
     
 	@NotEmpty(message = "La provincia no puede estar vacía")
+	@Column(name = "provincia")
     private String provincia;
     
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@Column(name = "fecha_inicio")
     private LocalDate fechaInicio;
     
 	@Email(message = "El email no es válido")
+	@Column(name = "email")
     private String email;
     
 	@NotEmpty(message = "El teléfono no puede estar vacío")
 	@Size(min = 10, max = 15, message = "El teléfono debe tener entre 10 y 15 caracteres")
+	@Column(name = "telefono")
     private String telefono;
     
     // Constructor parametrizado
     
-	public Sucursal(int id, String nombre, String direccion, String provincia, LocalDate fechaInicio, String email,
+	public Sucursal(int i, String nombre, String direccion, String provincia, LocalDate fechaInicio, String email,
 			String telefono) {
 		super();
-		this.id = id;
+		this.id = i;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.provincia = provincia;
