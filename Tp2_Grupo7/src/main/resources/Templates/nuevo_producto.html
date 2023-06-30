@@ -20,14 +20,14 @@
 					<div class="row mb-3">
 						<label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
 						<div class="col-sm-9">
-							<input type="text" id="nombre" name="producto_nombre" class="form-control" th:field="*{nombre}">
+							<input type="text" id="nombre" name="producto_nombre" class="form-control" th:field="*{nombre}" placeholder="Ingrese el nombre del producto" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
 							<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="codigo" class="col-sm-3 col-form-label">Código</label>
 						<div class="col-sm-9">
-							<input type="number" id="codigo" name="producto_codigo" class="form-control" th:field="*{codigo}" th:disabled="${edicion}?true:false">
+							<input type="number" id="codigo" name="producto_codigo" class="form-control" th:field="*{codigo}" th:disabled="${edicion}?true:false" th:classappend="${#fields.hasErrors('codigo')} ? 'is-invalid' : ''">
 							<input type="hidden" id="codigo" name="producto_codigo" class="form-control" th:field="*{codigo}" th:if="${edicion}">
 							<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
 						</div>
@@ -35,21 +35,29 @@
 					<div class="row mb-3">
 						<label for="precio" class="col-sm-3 col-form-label">Precio</label>
 						<div class="col-sm-9">
-							<input type="number" id="precio" name="producto_precio" class="form-control" th:field="*{precio}">
+							<input type="number" step="0.01" id="precio" name="producto_precio" class="form-control" th:field="*{precio}" th:classappend="${#fields.hasErrors('precio')} ? 'is-invalid' : ''">
 							<div class="text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="categoria" class="col-sm-3 col-form-label">Categoria</label>
 						<div class="col-sm-9">
-							<input type="text" id="categoria" name="producto_categoria" class="form-control" th:field="*{categoria}">
+							<select id="categoria" name="producto_categoria" class="form-select" aria-label="Default select example" th:field="*{categoria}" th:classappend="${#fields.hasErrors('categoria')} ? 'is-invalid' : ''">
+								<option value="">Seleccione una opcion...</option>
+								<option value="ALIMENTO">Alimento</option>
+								<option value="HIGIENE">Higiene</option>
+								<option value="ACCESORIO">Accesorio</option>
+								<option value="VESTIMENTA">Vestimenta</option>
+								<option value="MEDICAMENTO">Medicamento</option>
+								<option value="JUGUETE">Jueguete</option>
+							</select>
 							<div class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></div>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="descuento" class="col-sm-3 col-form-label">Descuento</label>
 						<div class="col-sm-9">
-							<input type="number" id="descuento" name="producto_descuento" class="form-control" th:field="*{descuento}">
+							<input type="number" id="descuento" name="producto_descuento" class="form-control" th:field="*{descuento}" th:classappend="${#fields.hasErrors('descuento')} ? 'is-invalid' : ''">
 							<div class="text-danger" th:if="${#fields.hasErrors('descuento')}" th:errors="*{descuento}"></div>
 						</div>
 					</div>
@@ -62,7 +70,7 @@
 					<div class="row mb-5">
 						<label for="descripcion" class="col-sm-3 col-form-label">Descripción</label>
 						<div class="col-sm-9">
-							<textarea id="descripcion" name="producto_descripcion" class="form-control" th:field="*{descripcion}" cols="40" rows="5" style="resize: none;"></textarea>
+							<textarea id="descripcion" name="producto_descripcion" class="form-control" th:field="*{descripcion}" cols="40" rows="5" style="resize: none;" placeholder="Ingrese una descripción del producto" th:classappend="${#fields.hasErrors('descripcion')} ? 'is-invalid' : ''"></textarea>
 							<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 						</div>
 					</div>
