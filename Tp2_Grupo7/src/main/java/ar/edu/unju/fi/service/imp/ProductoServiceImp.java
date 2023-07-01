@@ -4,8 +4,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import ar.edu.unju.fi.entity.Producto;
 import ar.edu.unju.fi.listas.ListaProducto;
-import ar.edu.unju.fi.model.Producto;
 import ar.edu.unju.fi.service.IProductoService;
 import ar.edu.unju.fi.util.UploadFile;
 
