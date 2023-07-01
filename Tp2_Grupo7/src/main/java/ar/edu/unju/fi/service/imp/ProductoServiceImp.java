@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.service.imp;
+/*package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import ar.edu.unju.fi.listas.ListaProducto;
 import ar.edu.unju.fi.service.IProductoService;
 import ar.edu.unju.fi.util.UploadFile;
 
-@Service
+@Service("productoServiceImp")
 public class ProductoServiceImp implements IProductoService {
 
 	@Autowired
@@ -57,4 +57,4 @@ public class ProductoServiceImp implements IProductoService {
 	public Producto getProducto() {
 		return producto;
 	}
-}
+}*/

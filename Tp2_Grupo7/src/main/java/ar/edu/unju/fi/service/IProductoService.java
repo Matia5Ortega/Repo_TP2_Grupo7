@@ -11,7 +11,7 @@ public interface IProductoService {
 	
 	void guardar(Producto producto, MultipartFile image) throws Exception;
 	
-	Producto getBy(int codigo);
+	Producto getById(long id);
 	
 	void modificar(Producto producto, MultipartFile image)throws Exception;
 	

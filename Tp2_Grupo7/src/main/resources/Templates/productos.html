@@ -31,8 +31,8 @@
 						<li th:text="${producto.calcularDescuento}" class="list-group-item"></li>
 					</ul>
 					<div class="card-body">
-						<a th:href="@{/productos/modificar/}+${producto.codigo}" class="btn btn-primary" role="button">Editar</a> 
-						<a th:href="@{/productos/eliminar/}+${producto.codigo}" class="btn btn-primary" role="button">Eliminar</a>
+						<a th:href="@{/productos/modificar/}+${producto.id}" class="btn btn-primary" role="button">Editar</a> 
+						<a th:href="@{/productos/eliminar/}+${producto.id}" class="btn btn-primary" role="button">Eliminar</a>
 					</div>
 				</div>
 			</div>

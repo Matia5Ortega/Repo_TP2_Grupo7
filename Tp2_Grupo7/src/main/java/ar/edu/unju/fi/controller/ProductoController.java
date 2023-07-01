@@ -2,6 +2,7 @@ package ar.edu.unju.fi.controller;
 
 import java.net.MalformedURLException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ import jakarta.validation.Valid;
 public class ProductoController {
 	
 	@Autowired
+	@Qualifier("productoServiceMysql")
 	private IProductoService productoService;
 	@Autowired
 	private UploadFile uploadFile;
@@ -57,10 +59,9 @@ public class ProductoController {
 		return modelView;
 	}
 	
-	@GetMapping("/modificar/{codigo}")
-	public String getModificarProductoPage(Model model, @PathVariable(value="codigo")int codigo) {
-		//Producto productoEncontrado = productoService.getBy(codigo);
-		model.addAttribute("producto", productoService.getBy(codigo));
+	@GetMapping("/modificar/{id}")
+	public String getModificarProductoPage(Model model, @PathVariable(value="id")long id) {
+		model.addAttribute("producto", productoService.getById(id));
 		model.addAttribute("edicion", true);
 		return "nuevo_producto";
 	}
@@ -71,11 +72,9 @@ public class ProductoController {
 		return "redirect:/productos/listado";
 	}
 	
-	@GetMapping("/eliminar/{codigo}")
-	public String eliminarProducto(@PathVariable (value="codigo")int codigo) {
-		productoService.eliminar(productoService.getBy(codigo));
-		//Producto p = listaProductos.buscarProductoByCodigo(codigo);
-		//listaProductos.getProductos().remove(p);		
+	@GetMapping("/eliminar/{id}")
+	public String eliminarProducto(@PathVariable (value="id")long id) {
+		productoService.eliminar(productoService.getById(id));		
 		return "redirect:/productos/listado";
 	}
 	

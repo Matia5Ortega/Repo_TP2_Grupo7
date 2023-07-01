@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.listas;
+/*package ar.edu.unju.fi.listas;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,3 +38,4 @@ public class ListaProducto {
 
 		
 }
+*/
