@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import ar.edu.unju.fi.entity.Servicio;
 import ar.edu.unju.fi.service.IServicioService;
 import jakarta.validation.Valid;
@@ -50,7 +49,7 @@ public class ServicioController {
 	
 	@GetMapping("/modificar/{id}")
 	public String getModificarServicioPage(Model model, @PathVariable(value="id")int id) {
-		model.addAttribute("servicio",servicioService.getBy(id));
+		model.addAttribute("servicio",servicioService.getById(id));
 		model.addAttribute("edicion", true);
 		return "nuevo_servicio";
 	}
@@ -63,7 +62,7 @@ public class ServicioController {
 	
 	@GetMapping("/eliminar/{id}")
 	public String eliminarServicio(@PathVariable (value="id")int id) {
-		servicioService.eliminar(servicioService.getBy(id));		
+		servicioService.eliminar(servicioService.getById(id));		
 		return "redirect:/servicios/listado";
 	}
 

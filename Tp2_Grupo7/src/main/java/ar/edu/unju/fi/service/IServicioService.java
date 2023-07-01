@@ -10,7 +10,7 @@ public interface IServicioService {
 	
 	void guardar(Servicio servicio);
 	
-	Servicio getBy(int id);
+	Servicio getById(long id);
 	
 	void modificar(Servicio servicio);
 	
