@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Consejo de Salud</title>
+</head>
+<body>
+    <h2>Nuevo Consejo de Salud</h2>
+    <form th:action="@{/consejos/guardar}" th:object="${consejo}" method="post">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" th:field="*{titulo}"/><br/><br/>
+        
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" th:field="*{descripcion}"></textarea><br/><br/>
+        
+        <input type="submit" value="Guardar"/>
+    </form>
+</body>
+</html>
