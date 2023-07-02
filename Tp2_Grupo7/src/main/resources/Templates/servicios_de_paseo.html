@@ -13,40 +13,35 @@
 		<div class="text-center">
 			<h1 class="text-center title-dog-walking-service">Servicio de Paseo</h1>
 		</div>
-		<div class="container-dog-walking-service">
+		<div class="text-center">
+			<a th:href="@{/servicios/nuevo}" class="btn btn-primary m-3" role="button">Nuevo Servicio de Paseo</a>
+		</div>
+		<div class="text-center container-dog-walking-service">
 			<div class="table-container">
 				<table class="table m-3">
         		<thead>
         			<tr>
-						<th>Día</th>
-						<th>Lunes</th>   
-						<th>Martes</th>  
-						<th>Miércoles</th>  
-						<th>Jueves</th>  
-						<th>Viernes</th>  
-						<th>Sábado</th>      			
+						<th>Paseador</th>
+						<th>Horario Entrada</th>
+						<th>Horario Salida</th>
+						<th>Horario Entrada</th>
+						<th>Horario Salida</th>
+						<th>Opciones</th>
         			</tr>
         		</thead>
         		<tbody>
-        			<tr>
-        				<th>Horario</th>
-        				<td>9 a 12 - 16 a 18</td>
-        				<td>9 a 12 - 16 a 18</td>
-        				<td>9 a 12 - 16 a 18</td>
-        				<td>9 a 12 - 16 a 18</td>
-        				<td>9 a 12 - 16 a 18</td>
-        				<td>9 a 12 - 16 a 18</td>	
+        			<tr th:each="servicio: ${servicios}">
+        				<td th:text="${servicio.nombrePaseador}"></td>
+        				<td th:text="${#temporals.format(servicio.fechaHoraPaseo,'EEEE HH:mm')}"></td>
+        				<td th:text="${#temporals.format(servicio.fechaHoraPaseo.plusHours(3),'EEEE HH:mm')}"></td>
+        				<td th:text="${#temporals.format(servicio.fechaHoraPaseo.plusHours(7),'EEEE HH:mm')}"></td>
+        				<td th:text="${#temporals.format(servicio.fechaHoraPaseo.plusHours(9),'EEEE HH:mm')}"></td>
+        				<td>
+        					<a th:href="@{/servicios/modificar/}+${servicio.id}" class="btn btn-primary" role="button">Editar</a> 
+							<a th:href="@{/servicios/eliminar/}+${servicio.id}" class="btn btn-primary" role="button">Eliminar</a>
+        				</td>
         			</tr>
-        			<tr>
-        				<th>Paseador</th>
-        				<td>Juan Perez</td>
-        				<td>Lucas Diaz</td>
-        				<td>Juan Perez</td>
-        				<td>Maria Gomez</td>
-        				<td>Lucas Diaz</td>
-        				<td>Roberto Vazquez</td>
-        			</tr>
-        		</tbody>	
+        		</tbody>
         	</table>
 			</div>
 		</div>

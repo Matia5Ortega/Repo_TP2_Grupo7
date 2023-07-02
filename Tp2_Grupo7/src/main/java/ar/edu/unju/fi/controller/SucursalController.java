@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.model.Sucursal;
+import ar.edu.unju.fi.entity.Sucursal;
 import ar.edu.unju.fi.service.ISucursalService;
 
 @Controller
@@ -20,45 +20,35 @@ public class SucursalController {
     @Autowired
     private ISucursalService sucursalService;
     
-    @GetMapping("/listado")
-    public String getListaSucursalesPage(Model model) {
-        model.addAttribute("sucursales", sucursalService.getLista());
-        return "sucursales";
+    @GetMapping("/registrar")
+    public String registrar(Model model) {
+        model.addAttribute("sucursal", new Sucursal());
+        return "form-sucursal";
     }
-
-    @GetMapping("/nuevo")
-    public String getNuevaSucursalPage(Model model) {
-        model.addAttribute("sucursal", sucursalService.getSucursal());
-        model.addAttribute("edicion", false);
-        return "nueva_sucursal";
-    }
-
+    
     @PostMapping("/guardar")
-    public ModelAndView guardarSucursalPage(@ModelAttribute("sucursal") Sucursal sucursal) {
-        ModelAndView modelView = new ModelAndView("sucursales");
-        sucursalService.guardar(sucursal);
-        modelView.addObject("sucursales", sucursalService.getLista());
-        return modelView;
+    public String guardar(@ModelAttribute("sucursal") Sucursal sucursal) {
+        sucursalService.guardarSucursal(sucursal);
+        return "redirect:/sucursal/lista";
     }
-
-    @GetMapping("/modificar/{id}")
-    public String getModificarSucursalPage(Model model, @PathVariable(value = "id") int id) {
-        Sucursal outSucursal = sucursalService.getBy(id);
-        model.addAttribute("sucursal", outSucursal);
-        model.addAttribute("edicion", true);
-        return "nueva_sucursal";
+    
+    @GetMapping("/lista")
+    public ModelAndView listar() {
+        ModelAndView mav = new ModelAndView("lista-sucursal");
+        mav.addObject("sucursales", sucursalService.obtenerTodasSucursales());
+        return mav;
     }
-
-    @PostMapping("/modificar")
-    public String modificarSucursal(@ModelAttribute("sucursal") Sucursal sucursal) {
-        sucursalService.modificar(sucursal);
-        return "redirect:/sucursal/listado";
+    
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable Long id, Model model) {
+        Sucursal sucursal = sucursalService.obtenerSucursalPorId(id);
+        model.addAttribute("sucursal", sucursal);
+        return "form-sucursal";
     }
-
+    
     @GetMapping("/eliminar/{id}")
-    public String eliminarSucursalPage(Model model, @PathVariable(value = "id") int id) {
-        Sucursal outSucursal = sucursalService.getBy(id);
-        sucursalService.eliminar(outSucursal);
-        return "redirect:/sucursal/listado";
+    public String eliminar(@PathVariable Long id) {
+        sucursalService.eliminarSucursal(id);
+        return "redirect:/sucursal/lista";
     }
 }
