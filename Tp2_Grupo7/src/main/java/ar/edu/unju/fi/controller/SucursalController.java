@@ -9,71 +9,46 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
 import ar.edu.unju.fi.entity.Sucursal;
-import ar.edu.unju.fi.listas.*;
+import ar.edu.unju.fi.service.ISucursalService;
 
 @Controller
 @RequestMapping("/sucursal")
 public class SucursalController {
-	
-	@Autowired 
-	private ListaSucursal listaSucursales;
-	@Autowired
-	private Sucursal sucursal;
-	
-	@GetMapping("/listado")
-	public String getListaSucursalesPage(Model model) {
-		model.addAttribute("sucursales", listaSucursales.getSucursales());
-		return "sucursales";
-	}
-	
-	@GetMapping("/nuevo")
-	public String getNuevaSucursalPage(Model model) {
-		model.addAttribute("sucursal", sucursal);
-		model.addAttribute("edicion", false);
-		
-		return "nueva_sucursal";
-	}
-	
-	@PostMapping("/guardar")
-	public ModelAndView guardarSucursalPage(@ModelAttribute("sucursal")Sucursal sucursal) {
-		ModelAndView modelView = new ModelAndView("sucursales");
-		listaSucursales.getSucursales().add(sucursal);
-		modelView.addObject("sucursales",listaSucursales.getSucursales());
-		return modelView;
-	}
-	
-	@GetMapping("/modificar/{id}")
-	public String getModificarSucursalPage(Model model, @PathVariable(value="id")int id) {
-		Sucursal outSucursal = listaSucursales.buscarSucursalById(id);
-		model.addAttribute("sucursal", outSucursal);
-		model.addAttribute("edicion", true);
-		
-		return "nueva_sucursal";
-	}
-	
-	@PostMapping("/modificar")
-	public String modificarSucursal(@ModelAttribute("sucursal")Sucursal sucursal) {
-		
-		Sucursal outSucursal = listaSucursales.buscarSucursalById(sucursal.getId());
-				 outSucursal.setNombre(sucursal.getNombre());
-				 outSucursal.setDireccion(sucursal.getDireccion());
-				 outSucursal.setEmail(sucursal.getEmail());
-				 outSucursal.setFechaInicio(sucursal.getFechaInicio());
-				 outSucursal.setProvincia(sucursal.getProvincia());
-				 outSucursal.setTelefono(sucursal.getTelefono());
-		
-		return "redirect:/sucursal/listado";
-	}
-	
-	@GetMapping("/eliminar/{id}")
-	public String eliminarSucursalPage(Model model, @PathVariable(value="id")int id) {
-		
-		Sucursal outSucursal = listaSucursales.buscarSucursalById(id);
-		listaSucursales.getSucursales().remove(outSucursal);
-		
-		return "redirect:/sucursal/listado";
-	}
-	
-	
+
+    @Autowired
+    private ISucursalService sucursalService;
+    
+    @GetMapping("/registrar")
+    public String registrar(Model model) {
+        model.addAttribute("sucursal", new Sucursal());
+        return "form-sucursal";
+    }
+    
+    @PostMapping("/guardar")
+    public String guardar(@ModelAttribute("sucursal") Sucursal sucursal) {
+        sucursalService.guardarSucursal(sucursal);
+        return "redirect:/sucursal/lista";
+    }
+    
+    @GetMapping("/lista")
+    public ModelAndView listar() {
+        ModelAndView mav = new ModelAndView("lista-sucursal");
+        mav.addObject("sucursales", sucursalService.obtenerTodasSucursales());
+        return mav;
+    }
+    
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable Long id, Model model) {
+        Sucursal sucursal = sucursalService.obtenerSucursalPorId(id);
+        model.addAttribute("sucursal", sucursal);
+        return "form-sucursal";
+    }
+    
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable Long id) {
+        sucursalService.eliminarSucursal(id);
+        return "redirect:/sucursal/lista";
+    }
 }
