@@ -1,10 +1,11 @@
-package ar.edu.unju.fi.listas;
+/*package ar.edu.unju.fi.listas;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
-import ar.edu.unju.fi.model.Servicio;
+
+import ar.edu.unju.fi.entity.Servicio;
 
 @Component
 public class ListaServicio {
@@ -39,3 +40,4 @@ public class ListaServicio {
 		return null;
 	}
 }
+*/
